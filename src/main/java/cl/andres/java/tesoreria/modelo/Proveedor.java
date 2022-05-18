@@ -9,11 +9,12 @@ import javax.persistence.Id;
 @Entity
 public class Proveedor {
 
-	// JPA se encarga a traves de esta anotacion de identificar la PK
+	// JPA se encargara a traves de estas anotaciones de identificar la PK, el auto incremental, los nulls y uniques, entre otros
+	// Con todo esto JPA genera la tabla con nombre de la clase y columnas de nombre de los atributos.
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)  // Con esto JPA genera la tabla con nombre de la clase y columnas de nombre de los atributos 
+	@GeneratedValue(strategy = GenerationType.AUTO)  
 	private Long id;
-	@Column(nullable = false, length = 10)
+	@Column(nullable = false, length = 10, unique = true)
 	private String rut;
 	@Column(nullable = false)
 	private String razonSocial;
@@ -21,7 +22,6 @@ public class Proveedor {
 	public Proveedor() {}
 	
 	public Proveedor(Long id, String rut, String razonSocial) {
-		super();
 		this.id = id;
 		this.rut = rut;
 		this.razonSocial = razonSocial;
